@@ -1,15 +1,23 @@
-var server = require("node-router").getServer();
+var http = require("http");
+var server = http.createServer();
+var Router = require("node-router");
 
-server.get("/", function(req, res){
-	res, simpleText(200,"Hola Mundo rutas");
+var router = Router();
+var route = router.push;
+
+
+
+route("GET","/", function(req, res){
+	console.log("llamada al /");
+	res.simpleText(200,"Hola Mundo rutas");
 });
 
-server.get("/hola", function(req,res){
+route("GET","/hola", function(req, res){
+	console.log("llamada al /hola");
 	res, simpleText(500,"Error");
 });
 
 
-
-server.listem(8000, function(){
+server.listen(8000, function(){
 	console.log("server ok")
 });
