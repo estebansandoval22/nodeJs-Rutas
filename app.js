@@ -1,5 +1,4 @@
 var http = require("http");
-var server = http.createServer();
 var Router = require("node-router");
 
 var router = Router();
@@ -7,17 +6,17 @@ var route = router.push;
 
 
 
-route("GET","/", function(req, res){
-	console.log("llamada al /");
-	res.simpleText(200,"Hola Mundo rutas");
+route("GET","/uno", function(req, res){
+	console.log("llamada al /uno");
+	res.send("Hola Mundo uno");
 });
 
-route("GET","/hola", function(req, res){
-	console.log("llamada al /hola");
-	res, simpleText(500,"Error");
+route("GET","/dos", function(req, res){
+	console.log("llamada al /dos");
+	res.send("Hola Mundo uno dos");
 });
-
-
+ 
+var server = http.createServer(router);
 server.listen(8000, function(){
 	console.log("server ok")
 });
